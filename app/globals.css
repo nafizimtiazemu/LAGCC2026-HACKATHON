@@ -1,0 +1,222 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Midnight Roast — primary palette (Neighborhood Pulse)
+   ============================================================ */
+:root {
+  --canvas: #0B0D12;
+  --surface: #141923;
+  --panel: #1B2230;
+  --panel-2: #232C3D;
+
+  --text-primary: #F3EEE5;
+  --text-secondary: #A7B1C2;
+  --text-muted: #758197;
+
+  --accent-warm: #C56F44;       /* brand warmth — copper espresso */
+  --accent-warm-2: #E89368;
+  --accent-cool: #4CCBC7;        /* intelligence — teal signal */
+  --accent-cool-2: #6FE2DD;
+  --accent-trust: #B7E46E;       /* compliance — civic lime */
+  --accent-danger: #F26D7D;
+
+  --hairline: rgba(255, 255, 255, 0.08);
+  --hairline-strong: rgba(255, 255, 255, 0.14);
+
+  /* Smoked glass tokens (authenticated product) */
+  --glass-bg: rgba(20, 25, 35, 0.62);
+  --glass-bg-strong: rgba(27, 34, 48, 0.78);
+  --glass-bg-subtle: rgba(20, 25, 35, 0.42);
+  --glass-border: rgba(255, 255, 255, 0.10);
+  --glass-border-strong: rgba(255, 255, 255, 0.14);
+  --glass-shadow: 0 24px 80px rgba(0, 0, 0, 0.32);
+
+  /* shadcn-compat tokens (kept for primitives) */
+  --background: 222 28% 6%;
+  --foreground: 36 35% 92%;
+  --card: 220 25% 11%;
+  --card-foreground: 36 35% 92%;
+  --primary: 18 53% 53%;
+  --primary-foreground: 36 35% 95%;
+  --secondary: 219 25% 14%;
+  --secondary-foreground: 36 35% 92%;
+  --muted: 219 25% 14%;
+  --muted-foreground: 218 14% 60%;
+  --accent: 219 25% 14%;
+  --accent-foreground: 36 35% 92%;
+  --border: 220 17% 18%;
+  --input: 220 17% 18%;
+  --ring: 18 53% 53%;
+  --radius: 0.875rem;
+}
+
+@layer base {
+  * { border-color: hsl(var(--border)); }
+
+  html, body {
+    background-color: var(--canvas);
+    color: var(--text-primary);
+    font-family: var(--font-sans, 'Inter'), system-ui, -apple-system, sans-serif;
+    font-feature-settings: 'cv11', 'ss01', 'ss03';
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    min-height: 100vh;
+    /* Subtle, fixed neighborhood field that all pages can sit on */
+    background:
+      radial-gradient(at 18% 8%,  rgba(197, 111, 68, 0.10) 0%, transparent 42%),
+      radial-gradient(at 82% 6%,  rgba(76, 203, 199, 0.08) 0%, transparent 42%),
+      radial-gradient(at 86% 92%, rgba(183, 228, 110, 0.05) 0%, transparent 42%),
+      linear-gradient(180deg, #0B0D12 0%, #0E1117 60%, #0B0D12 100%);
+    background-attachment: fixed;
+  }
+
+  .font-display {
+    font-family: var(--font-display, 'Fraunces'), 'Times New Roman', Georgia, serif;
+    font-feature-settings: 'ss01';
+    font-optical-sizing: auto;
+    letter-spacing: -0.02em;
+  }
+
+  ::selection {
+    background: rgba(197, 111, 68, 0.35);
+    color: var(--text-primary);
+  }
+
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.16); }
+
+  /* Visible focus rings — accessibility */
+  :focus-visible {
+    outline: 2px solid var(--accent-cool);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+@layer components {
+  /* === Smoked glass panels (authenticated product) === */
+  .panel {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    box-shadow: var(--glass-shadow);
+    border-radius: 20px;
+  }
+  .panel-strong {
+    background: var(--glass-bg-strong);
+    border: 1px solid var(--glass-border-strong);
+    backdrop-filter: blur(20px) saturate(125%);
+    -webkit-backdrop-filter: blur(20px) saturate(125%);
+    box-shadow: var(--glass-shadow);
+    border-radius: 20px;
+  }
+  .panel-subtle {
+    background: var(--glass-bg-subtle);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: blur(14px);
+    -webkit-backdrop-filter: blur(14px);
+    border-radius: 16px;
+  }
+
+  /* === Marketing-surface chrome === */
+  .hairline { border: 1px solid var(--hairline); }
+  .hairline-strong { border: 1px solid var(--hairline-strong); }
+
+  /* === Editorial gradient text (used sparingly on landing) === */
+  .text-warm-gradient {
+    background: linear-gradient(135deg, #E89368 0%, #C56F44 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  .text-pulse-gradient {
+    background: linear-gradient(120deg, #F3EEE5 0%, #C56F44 50%, #4CCBC7 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* === Pulse node animation — used for live signal dots === */
+  .pulse-dot { position: relative; }
+  .pulse-dot::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: inherit;
+    border: 1px solid currentColor;
+    opacity: 0;
+    animation: pulse-ring 2.4s ease-out infinite;
+  }
+
+  /* === Mono label used everywhere on the marketing surface === */
+  .mono-label {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+    font-size: 10px;
+    letter-spacing: 0.34em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  /* === Hide scrollbars in containers that need it === */
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { scrollbar-width: none; }
+}
+
+@layer utilities {
+  .text-balance { text-wrap: balance; }
+  .perspective-1800 { perspective: 1800px; }
+  .perspective-2400 { perspective: 2400px; }
+
+  /* Map paint utilities for inline SVG backgrounds */
+  .stroke-hairline { stroke: rgba(255, 255, 255, 0.08); }
+  .stroke-signal { stroke: rgba(76, 203, 199, 0.55); }
+  .stroke-warm { stroke: rgba(197, 111, 68, 0.55); }
+  .stroke-trust { stroke: rgba(183, 228, 110, 0.55); }
+}
+
+/* ============================================================
+   Keyframes
+   ============================================================ */
+@keyframes pulse-ring {
+  0%   { transform: scale(0.85); opacity: 0.6; }
+  80%  { transform: scale(1.7);  opacity: 0;   }
+  100% { transform: scale(1.7);  opacity: 0;   }
+}
+
+@keyframes signal-trail {
+  0%   { stroke-dashoffset: 0;   opacity: 0;   }
+  20%  { opacity: 0.8; }
+  100% { stroke-dashoffset: -200; opacity: 0;  }
+}
+
+@keyframes drift {
+  0%, 100% { transform: translate3d(0, 0, 0); }
+  50%      { transform: translate3d(6px, -8px, 0); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+/* ============================================================
+   Reduced motion — kill all decorative animation
+   ============================================================ */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+  .pulse-dot::after { display: none; }
+}
