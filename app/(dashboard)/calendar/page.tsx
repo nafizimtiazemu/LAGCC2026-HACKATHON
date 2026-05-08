@@ -1,8 +1,8 @@
 'use client';
 
 import { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Plus, X } from 'lucide-react';
+import { motion } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Plus, X, Instagram, Facebook, Music2, MapPin } from 'lucide-react';
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
@@ -10,19 +10,42 @@ import { GlassPanel, RouteHeader, TrustBadge } from '@/components/shell';
 import { useAppStore } from '@/lib/store';
 
 const PLATFORMS = [
-  { id: 'all', name: 'All', glyph: '·' },
-  { id: 'instagram', name: 'Instagram', glyph: 'IG' },
-  { id: 'tiktok', name: 'TikTok', glyph: 'TT' },
-  { id: 'facebook', name: 'Facebook', glyph: 'FB' },
-  { id: 'google', name: 'Google', glyph: 'GB' },
+  { id: 'all', name: 'All' },
+  { id: 'instagram', name: 'Instagram' },
+  { id: 'tiktok', name: 'TikTok' },
+  { id: 'facebook', name: 'Facebook' },
+  { id: 'google', name: 'Google' },
 ];
 
-const PLATFORM_TONE: Record<string, string> = {
-  instagram: 'bg-warm/70 text-canvas',
-  tiktok: 'bg-ink/80 text-canvas',
-  facebook: 'bg-cool/70 text-canvas',
-  google: 'bg-trust/70 text-canvas',
+// Lucide icons mapped to each platform — replaces the 2-letter abbreviation hack
+const PLATFORM_ICON: Record<string, React.ComponentType<{ className?: string }>> = {
+  instagram: Instagram,
+  tiktok: Music2,
+  facebook: Facebook,
+  google: MapPin,
 };
+
+// Tile color schemes — for the avatar squares (queue + dialog)
+const PLATFORM_TILE: Record<string, string> = {
+  instagram: 'bg-warm/20 text-warm-bright border border-warm/40',
+  tiktok: 'bg-cool/15 text-ink border border-hairline-strong',
+  facebook: 'bg-cool/20 text-cool-bright border border-cool/40',
+  google: 'bg-trust/20 text-trust border border-trust/40',
+};
+
+// Pill color schemes — for in-grid event chips
+const PLATFORM_PILL: Record<string, string> = {
+  instagram: 'bg-warm/25 text-warm-bright border border-warm/40',
+  tiktok: 'bg-cool/15 text-ink-secondary border border-hairline-strong',
+  facebook: 'bg-cool/25 text-cool-bright border border-cool/40',
+  google: 'bg-trust/25 text-trust border border-trust/40',
+};
+
+function PlatformIcon({ platform, className = 'h-4 w-4' }: { platform: string; className?: string }) {
+  const Icon = PLATFORM_ICON[platform?.toLowerCase()];
+  if (!Icon) return null;
+  return <Icon className={className} />;
+}
 
 function getMonthDays(year: number, month: number) {
   const first = new Date(year, month, 1);
@@ -75,7 +98,6 @@ export default function CalendarPage() {
   return (
     <div className="space-y-6">
       <RouteHeader
-        pillar="Reach · 03"
         title={
           <>
             Content <span className="italic text-warm-bright">Calendar</span>
@@ -158,9 +180,14 @@ export default function CalendarPage() {
                     <button
                       key={post.id}
                       onClick={() => setSelected(post)}
-                      className={`block w-full truncate rounded ${PLATFORM_TONE[post.platform] || 'bg-ink/40 text-canvas'} px-1.5 py-0.5 text-[9px] font-medium md:text-[10px]`}
+                      className={`flex w-full items-center gap-1 rounded px-1.5 py-1 text-left transition hover:opacity-80 ${
+                        PLATFORM_PILL[post.platform?.toLowerCase()] || 'bg-white/5 text-ink border border-hairline'
+                      }`}
                     >
-                      {post.time}
+                      <PlatformIcon platform={post.platform} className="h-2.5 w-2.5 flex-shrink-0" />
+                      <span className="block min-w-0 flex-1 truncate text-[10px] font-medium leading-tight">
+                        {post.title}
+                      </span>
                     </button>
                   ))}
                   {posts.length > 2 && (
@@ -192,11 +219,11 @@ export default function CalendarPage() {
                 className="flex w-full items-center gap-4 rounded-xl border border-hairline bg-white/[0.025] p-3 text-left transition hover:border-cool/30 hover:bg-white/[0.04]"
               >
                 <div
-                  className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg font-mono text-[10px] font-semibold tracking-widest ${
-                    PLATFORM_TONE[post.platform] || 'bg-ink/40 text-canvas'
+                  className={`flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg ${
+                    PLATFORM_TILE[post.platform?.toLowerCase()] || 'bg-white/5 text-ink border border-hairline'
                   }`}
                 >
-                  {(post.platform || '').slice(0, 2).toUpperCase()}
+                  <PlatformIcon platform={post.platform} className="h-4 w-4" />
                 </div>
                 <div className="min-w-0 flex-1">
                   <p className="truncate text-sm font-medium text-ink">{post.title}</p>
@@ -228,11 +255,11 @@ export default function CalendarPage() {
 
               <div className="flex items-center gap-3">
                 <div
-                  className={`flex h-12 w-12 items-center justify-center rounded-lg font-mono text-xs font-semibold tracking-widest ${
-                    PLATFORM_TONE[selected.platform] || 'bg-ink/40 text-canvas'
+                  className={`flex h-12 w-12 items-center justify-center rounded-lg ${
+                    PLATFORM_TILE[selected.platform?.toLowerCase()] || 'bg-white/5 text-ink border border-hairline'
                   }`}
                 >
-                  {(selected.platform || '').slice(0, 2).toUpperCase()}
+                  <PlatformIcon platform={selected.platform} className="h-5 w-5" />
                 </div>
                 <div>
                   <h3 className="font-display text-xl font-light text-ink">{selected.title}</h3>

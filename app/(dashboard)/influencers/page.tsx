@@ -30,7 +30,6 @@ export default function InfluencersPage() {
   return (
     <div className="space-y-6">
       <RouteHeader
-        pillar="Reach · 03"
         title={
           <>
             Creator <span className="italic text-warm-bright">Match Network</span>

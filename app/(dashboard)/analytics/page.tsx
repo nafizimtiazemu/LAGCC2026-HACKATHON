@@ -42,10 +42,9 @@ export default function AnalyticsPage() {
   return (
     <div className="space-y-6">
       <RouteHeader
-        pillar="Insight · 04"
         title={
           <>
-            <span className="italic text-cool-bright">Analytics</span>
+            Business <span className="italic text-cool-bright">Analytics</span>
           </>
         }
         description="Last 30 days · Brew & Bloom Café"

@@ -36,7 +36,6 @@ export default function CompliancePage() {
   return (
     <div className="space-y-6">
       <RouteHeader
-        pillar="Trust · 05"
         title={
           <>
             Compliance <span className="italic text-trust">Center</span>
@@ -180,11 +179,11 @@ export default function CompliancePage() {
             <div>
               <h3 className="font-display text-lg font-light text-ink">Need help with a filing?</h3>
               <p className="mt-1 text-sm text-ink-secondary">
-                Bloom AI prepares documents and walks you through the next steps for any open item.
+                Flow AI prepares documents and walks you through the next steps for any open item.
               </p>
             </div>
           </div>
-          <Button variant="outline">Ask Bloom AI</Button>
+          <Button variant="outline">Ask Flow AI</Button>
         </div>
       </GlassPanel>
     </div>

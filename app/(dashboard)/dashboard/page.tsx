@@ -47,7 +47,6 @@ export default function DashboardPage() {
   return (
     <div className="space-y-6">
       <RouteHeader
-        pillar="Vision · 01"
         title={
           <>
             Welcome back, <span className="italic text-warm-bright">Alex</span>
@@ -112,7 +111,6 @@ export default function DashboardPage() {
           <GlassPanel className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <span className="mono-label">Insight · 04</span>
                 <h3 className="mt-1 font-display text-xl font-light text-ink">Engagement trend</h3>
                 <p className="text-sm text-ink-secondary">Last 8 weeks across all channels</p>
               </div>
@@ -160,7 +158,6 @@ export default function DashboardPage() {
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.35 }}>
           <GlassPanel className="h-full p-6">
             <div className="flex items-center gap-2">
-              <span className="mono-label">Intelligence · 02</span>
             </div>
             <div className="mt-1 flex items-center gap-2">
               <Sparkles className="h-4 w-4 text-cool-bright" />
@@ -186,7 +183,6 @@ export default function DashboardPage() {
           <GlassPanel className="p-6">
             <div className="flex items-center justify-between">
               <div>
-                <span className="mono-label">Reach · 03</span>
                 <h3 className="mt-1 font-display text-xl font-light text-ink">Upcoming posts</h3>
               </div>
               <Link href="/calendar" className="mono-label hover:text-ink transition">
@@ -220,7 +216,6 @@ export default function DashboardPage() {
           <GlassPanel className="h-full p-6">
             <div className="flex items-center justify-between">
               <div>
-                <span className="mono-label">Trust · 05</span>
                 <h3 className="mt-1 flex items-center gap-2 font-display text-xl font-light text-ink">
                   <Shield className="h-4 w-4 text-trust" />
                   Compliance
@@ -259,7 +254,6 @@ export default function DashboardPage() {
         <GlassPanel className="p-6">
           <div className="flex items-center justify-between">
             <div>
-              <span className="mono-label">Reach · 03</span>
               <h3 className="mt-1 font-display text-xl font-light text-ink">Top creator matches</h3>
               <p className="text-sm text-ink-secondary">Curated based on your audience profile</p>
             </div>

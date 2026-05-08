@@ -35,7 +35,7 @@ export function Sidebar() {
   return (
     <aside className="hidden w-64 flex-shrink-0 border-r border-hairline bg-surface/40 backdrop-blur-2xl md:flex md:flex-col">
       {/* Logo */}
-      <Link href="/dashboard" className="flex items-center gap-3">
+      <Link href="/dashboard" className="flex items-center gap-4">
         <InfluenceFlowLogo className="text-base" />
       </Link>
 

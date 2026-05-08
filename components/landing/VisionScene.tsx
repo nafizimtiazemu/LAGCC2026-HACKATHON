@@ -51,8 +51,7 @@ export function VisionScene() {
               {[
                 ['142', 'Daily foot-traffic windows'],
                 ['8.4K', 'Local audience reachable'],
-                ['12', 'Adjacent businesses'],
-                ['3', 'Recurring local events'],
+                ['2-8', 'Adjacent businesses'],
               ].map(([v, l]) => (
                 <div key={l as string} className="border-l border-hairline pl-4">
                   <p className="font-display text-2xl font-light text-ink">{v}</p>

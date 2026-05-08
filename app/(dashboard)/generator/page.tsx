@@ -83,7 +83,6 @@ export default function GeneratorPage() {
   return (
     <div className="space-y-6">
       <RouteHeader
-        pillar="Intelligence · 02"
         title={
           <>
             AI <span className="italic text-cool-bright">Content Generator</span>
