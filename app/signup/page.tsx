@@ -64,8 +64,7 @@ export default function SignupPage() {
               marketing OS.
             </h1>
             <p className="mt-6 text-base leading-relaxed text-ink-secondary">
-              We&apos;ll learn your business, map your audience, and prepare your first week of content. No
-              backend, no real billing — just the demo, end-to-end.
+              We&apos;ll learn your business, map your audience, and prepare your first week of content.
             </p>
             <div className="mt-8 grid grid-cols-3 gap-4">
               {[
@@ -81,7 +80,6 @@ export default function SignupPage() {
             </div>
           </div>
           <div>
-            <span className="mono-label">Brew & Bloom Café · Austin, TX</span>
           </div>
         </div>
 
@@ -98,7 +96,7 @@ export default function SignupPage() {
                 <InfluenceFlowLogo className="text-base" />
               </Link>
 
-              <h2 className="mt-8 font-display text-3xl font-light text-ink">Start the demo</h2>
+              <h2 className="mt-8 font-display text-3xl font-light text-ink">Sign Up</h2>
               <p className="mt-2 text-sm text-ink-secondary">
                 Already have an account?{' '}
                 <Link href="/signup" className="text-warm-bright hover:text-warm">
@@ -155,8 +153,6 @@ export default function SignupPage() {
                   Apple
                 </Button>
               </div>
-
-              <p className="mt-6 text-center mono-label">No real auth · Demo mode</p>
             </GlassPanel>
           </motion.div>
         </div>

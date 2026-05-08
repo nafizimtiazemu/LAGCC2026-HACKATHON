@@ -54,7 +54,6 @@ export default function ConnectSocialsPage() {
 
       <div className="relative z-10 mx-auto max-w-6xl px-6 py-20 md:py-24">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }} className="text-center">
-          <span className="mono-label">Step 6 · channels</span>
           <h1 className="mt-6 font-display text-4xl font-light leading-tight tracking-tight text-ink md:text-5xl">
             Connect your <em className="italic text-warm-bright">channels.</em>
           </h1>

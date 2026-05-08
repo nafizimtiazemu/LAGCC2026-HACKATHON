@@ -72,7 +72,6 @@ export default function OnboardingPage() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-16 md:py-20">
         <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} className="text-center">
-          <span className="mono-label">Step 02 · Onboarding</span>
           <h1 className="mt-4 font-display text-4xl font-light tracking-tight text-ink md:text-5xl">
             Let&apos;s map your <em className="italic text-warm-bright">business.</em>
           </h1>
@@ -118,8 +117,8 @@ export default function OnboardingPage() {
             <AnimatePresence mode="wait">
               {step === 0 && (
                 <motion.div key="business" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }}>
-                  <p className="mono-label">01 · Business basics</p>
-                  <h2 className="mt-2 font-display text-2xl font-light text-ink">Tell us about your storefront</h2>
+                  {/* <p className="mono-label">Business insight</p> */}
+                  <h2 className="mt-2 font-display text-2xl font-light text-ink">Tell us about your business</h2>
 
                   <div className="mt-6 space-y-4">
                     <div className="space-y-2">
@@ -152,7 +151,6 @@ export default function OnboardingPage() {
 
               {step === 1 && (
                 <motion.div key="brand" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }}>
-                  <p className="mono-label">02 · Brand</p>
                   <h2 className="mt-2 font-display text-2xl font-light text-ink">How does your brand sound?</h2>
 
                   <div className="mt-6 space-y-5">
@@ -188,9 +186,7 @@ export default function OnboardingPage() {
 
               {step === 2 && (
                 <motion.div key="assets" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }}>
-                  <p className="mono-label">03 · Assets</p>
                   <h2 className="mt-2 font-display text-2xl font-light text-ink">Upload a few photos</h2>
-                  <p className="mt-1 text-sm text-ink-secondary">Use these sample assets for the demo, or drag your own.</p>
 
                   <div className="mt-6 grid gap-3 sm:grid-cols-2">
                     {SAMPLE_ASSETS.map((a) => {
@@ -222,7 +218,6 @@ export default function OnboardingPage() {
 
               {step === 3 && (
                 <motion.div key="audience" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }}>
-                  <p className="mono-label">04 · Audience</p>
                   <h2 className="mt-2 font-display text-2xl font-light text-ink">Who do you serve?</h2>
 
                   <div className="mt-6 space-y-5">
@@ -258,7 +253,6 @@ export default function OnboardingPage() {
 
               {step === 4 && (
                 <motion.div key="goals" initial={{ opacity: 0, x: 16 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: -16 }}>
-                  <p className="mono-label">05 · Goals</p>
                   <h2 className="mt-2 font-display text-2xl font-light text-ink">What does success look like?</h2>
 
                   <div className="mt-6 space-y-5">

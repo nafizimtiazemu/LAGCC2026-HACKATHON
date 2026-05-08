@@ -46,7 +46,6 @@ export default function PackagesPage() {
 
       <div className="relative z-10 mx-auto max-w-7xl px-6 py-20 md:py-28">
         <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.7 }} className="text-center">
-          <span className="mono-label">Plan · Choose</span>
           <h1 className="mx-auto mt-6 max-w-3xl font-display text-5xl font-light leading-[0.95] tracking-tight text-ink md:text-7xl">
             Pricing built for <em className="italic text-warm-bright">growing</em> local businesses
           </h1>
@@ -71,7 +70,7 @@ export default function PackagesPage() {
                 className="relative"
               >
                 {isPopular && (
-                  <div className="absolute -top-3 left-1/2 z-10 -translate-x-1/2">
+                  <div className="absolute -top-1 left-1/2 z-10 -translate-x-1/2">
                     <TrustBadge tone="warm">★ Most popular</TrustBadge>
                   </div>
                 )}
@@ -183,7 +182,7 @@ export default function PackagesPage() {
                     Activate plan
                   </Button>
                 </div>
-                <p className="mt-4 mono-label">Demo mode · No charges will be made</p>
+                {/* <p className="mt-4 mono-label">Demo mode · No charges will be made</p> */}
               </div>
             </>
           )}
