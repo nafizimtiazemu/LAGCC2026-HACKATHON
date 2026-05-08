@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ArrowRight } from 'lucide-react';
 import { NeighborhoodMap } from '@/components/neighborhood/NeighborhoodMap';
+import { InfluenceFlowLogo } from '../brand/InfluenceFlowLogo';
 
 export function FinalCTA() {
   return (
@@ -17,9 +18,6 @@ export function FinalCTA() {
       </div>
 
       <div className="relative mx-auto max-w-5xl px-6 pb-32 text-center md:pb-48">
-        <motion.div initial={{ opacity: 0 }} whileInView={{ opacity: 1 }} viewport={{ once: true }} transition={{ duration: 0.8 }}>
-          <span className="mono-label">06 — Begin</span>
-        </motion.div>
 
         <motion.h2
           initial={{ opacity: 0, y: 30 }}
@@ -42,8 +40,7 @@ export function FinalCTA() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mx-auto mt-8 max-w-xl text-base text-ink-secondary md:text-lg"
         >
-          Five minutes of onboarding. A full marketing operating system in return. Demo runs entirely on
-          your machine.
+          Five minutes of onboarding. A full marketing operating system in return.
         </motion.p>
 
         <motion.div
@@ -64,8 +61,6 @@ export function FinalCTA() {
             View pricing
           </Link>
         </motion.div>
-
-        <p className="mt-10 mono-label">No backend · No real billing · Demo data only</p>
       </div>
 
       <footer className="relative border-t border-hairline">
@@ -73,15 +68,12 @@ export function FinalCTA() {
           <div className="grid gap-12 md:grid-cols-[1fr_2fr]">
             {/* Brand */}
             <div>
-              <div className="flex items-center gap-3">
-                <div className="h-7 w-7 rounded-md bg-gradient-to-br from-warm to-warm-bright" />
-                <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-ink">LocalBoost</span>
-              </div>
+              <Link href="/" className="flex items-center gap-3">
+                <InfluenceFlowLogo className="text-base" />
+              </Link>
               <p className="mt-5 max-w-xs text-sm text-ink-secondary">
-                AI marketing operating system for the cafés, salons, studios, and shops that hold our cities
-                together.
+                AI marketing operating system for small businesses.
               </p>
-              <p className="mt-6 mono-label">Austin · TX · MMXXVI</p>
             </div>
 
             {/* Link columns */}
@@ -110,7 +102,7 @@ export function FinalCTA() {
 
           <div className="mt-12 flex flex-col items-start justify-between gap-3 border-t border-hairline pt-6 md:flex-row md:items-center">
             <p className="text-xs text-ink-muted">
-              © 2026 LocalBoost AI · Frontend-only investor demo. No real customer data is processed.
+              © 2026 LocalBoost AI, Inc. All rights reserved.
             </p>
             <p className="font-mono text-[10px] tracking-[0.3em] text-ink-muted uppercase">
               Built with intention

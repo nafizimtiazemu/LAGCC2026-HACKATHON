@@ -13,6 +13,7 @@ import { NeighborhoodBackground } from '@/components/neighborhood';
 import { useAppStore } from '@/lib/store';
 import { delay } from '@/lib/utils';
 import { toast } from '@/components/ui/toaster';
+import { InfluenceFlowLogo } from '@/components/brand/InfluenceFlowLogo';
 
 export default function SignupPage() {
   const router = useRouter();
@@ -93,10 +94,9 @@ export default function SignupPage() {
             className="w-full max-w-md"
           >
             <GlassPanel variant="strong" className="p-8">
-              <div className="flex items-center gap-2">
-                <div className="h-7 w-7 rounded-md bg-gradient-to-br from-warm to-warm-bright" />
-                <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-ink">LocalBoost</span>
-              </div>
+              <Link href="/" className="flex items-center gap-3">
+                <InfluenceFlowLogo className="text-base" />
+              </Link>
 
               <h2 className="mt-8 font-display text-3xl font-light text-ink">Start the demo</h2>
               <p className="mt-2 text-sm text-ink-secondary">

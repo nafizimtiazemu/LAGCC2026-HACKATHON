@@ -15,7 +15,7 @@ function MiniDashboard({ active }: { active: MotionValue<number> }) {
         <span className="h-2 w-2 rounded-full bg-danger" />
         <span className="h-2 w-2 rounded-full bg-warm-bright" />
         <span className="h-2 w-2 rounded-full bg-trust" />
-        <span className="ml-3 font-mono text-[9px] tracking-widest text-ink-muted">localboost.ai/dashboard</span>
+        <span className="ml-3 font-mono text-[9px] tracking-widest text-ink-muted">influenceflow.ai/dashboard</span>
       </div>
 
       <div className="flex h-[calc(100%-1.75rem)]">
@@ -163,7 +163,7 @@ export function LaptopReveal() {
   const signalOp = useTransform(scrollYProgress, [0.4, 0.6, 0.8], [0, 0.6, 0]);
 
   return (
-    <section ref={ref} className="relative h-[320vh] bg-canvas">
+    <section ref={ref} className="relative h-[240vh] bg-canvas">
       <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden">
         {/* Ambient glow */}
         <div className="absolute left-1/2 top-1/2 h-[700px] w-[700px] -translate-x-1/2 -translate-y-1/2 rounded-full bg-gradient-to-br from-warm/15 via-cool/10 to-trust/8 blur-3xl" />
@@ -173,23 +173,19 @@ export function LaptopReveal() {
           <SceneLabel pillar="Insight" vertical />
         </div>
 
-        <div className="relative grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 md:pl-32 lg:grid-cols-2 lg:pl-48">
-          {/* Left: copy */}
-          <motion.div style={{ y: headlineY, opacity: headlineOp }} className="text-ink">
-            <SceneLabel pillar="Insight" index={4} total={5} />
-            <h2 className="mt-8 font-display text-5xl font-light leading-[0.95] tracking-tight md:text-6xl lg:text-7xl">
+        <div className="relative grid w-full max-w-7xl grid-cols-1 items-center gap-10 px-6 md:pl-32 lg:grid-cols-[0.9fr_1.1fr] lg:pl-48">          <motion.div style={{ y: headlineY, opacity: headlineOp }} className="text-ink">
+            <h2 className="font-display text-5xl font-light leading-[0.95] tracking-tight md:text-6xl lg:text-7xl">
               The pulse resolves
               <br />
               <em className="italic text-cool-bright">into one operating system.</em>
             </h2>
             <p className="mt-8 max-w-md text-base leading-relaxed text-ink-secondary md:text-lg">
-              Reach, engagement, conversion, compliance — across every channel, in real time. Bloom AI
-              watches the numbers so you can run your business.
+              Reach, engagement, conversion, compliance — across every channel, in real time.
             </p>
           </motion.div>
 
           {/* Right: laptop */}
-          <div className="relative flex items-center justify-center perspective-1800">
+          <div className="relative flex items-center justify-center pt-28 perspective-1800">
             {/* Signal lines feeding into the laptop */}
             <motion.svg
               style={{ opacity: signalOp }}
@@ -254,10 +250,6 @@ export function LaptopReveal() {
               </motion.div>
             </div>
           </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2">
-          <span className="mono-label">Scroll to open</span>
         </div>
       </div>
     </section>

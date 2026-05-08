@@ -13,6 +13,7 @@ import {
   Settings as SettingsIcon,
 } from 'lucide-react';
 import { useAppStore } from '@/lib/store';
+import { InfluenceFlowLogo } from '../brand/InfluenceFlowLogo';
 
 const NAV_ITEMS = [
   { href: '/dashboard', label: 'Dashboard', icon: LayoutDashboard, pillar: 'Vision' },
@@ -34,13 +35,9 @@ export function Sidebar() {
   return (
     <aside className="hidden w-64 flex-shrink-0 border-r border-hairline bg-surface/40 backdrop-blur-2xl md:flex md:flex-col">
       {/* Logo */}
-      <div className="flex h-16 items-center gap-3 border-b border-hairline px-6">
-        <div className="relative">
-          <div className="h-7 w-7 rounded-md bg-gradient-to-br from-warm to-warm-bright" />
-          <span className="pulse-dot absolute -right-1 -top-1 block h-2 w-2 rounded-full bg-cool text-cool" />
-        </div>
-        <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-ink">LocalBoost</span>
-      </div>
+      <Link href="/dashboard" className="flex items-center gap-3">
+        <InfluenceFlowLogo className="text-base" />
+      </Link>
 
       {/* Pillar groups */}
       <nav className="flex-1 space-y-0.5 overflow-y-auto p-3">

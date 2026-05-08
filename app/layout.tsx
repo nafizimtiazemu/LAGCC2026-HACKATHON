@@ -3,9 +3,9 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 
 export const metadata: Metadata = {
-  title: "LocalBoost AI — Your neighborhood's growth signal.",
+  title: "InfluenceFlow — Connect, Create, Grow",
   description:
-    'AI marketing operating system for local businesses. Brand voice, campaigns, creator matches, performance, and compliance — in one operating system.',
+    'AI-powered influencer marketing, content, analytics, and compliance — in one platform.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

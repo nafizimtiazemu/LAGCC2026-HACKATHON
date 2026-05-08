@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { InfluenceFlowLogo } from '../brand/InfluenceFlowLogo';
 
 export function LandingNav() {
   const [scrolled, setScrolled] = useState(false);
@@ -27,17 +28,13 @@ export function LandingNav() {
       >
         <div className="mx-auto flex max-w-[1600px] items-center justify-between px-6 py-5 md:px-12">
           <Link href="/" className="flex items-center gap-3">
-            <div className="relative">
-              <div className="h-7 w-7 rounded-md bg-gradient-to-br from-warm to-warm-bright" />
-              <span className="pulse-dot absolute -right-1 -top-1 block h-2 w-2 rounded-full bg-cool text-cool" />
-            </div>
-            <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-ink">LocalBoost</span>
+            <InfluenceFlowLogo className="text-base" />
           </Link>
 
           <div className="hidden items-center gap-8 md:flex">
             {[
               { href: '/packages', label: 'Pricing' },
-              { href: '/dashboard', label: 'Demo' },
+              { href: '/dashboard', label: 'Analytics' },
               { href: '/signup', label: 'Sign in' },
             ].map((l) => (
               <Link

@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { useEffect, useState } from 'react';
-import { NeighborhoodMap } from './NeighborhoodMap';
+// import { NeighborhoodMap } from './NeighborhoodMap';
 
 type Tone = 'warm' | 'cool' | 'trust' | 'neutral';
 
@@ -143,25 +143,41 @@ export function SignalTrail({
 
   return (
     <svg
-      className="pointer-events-none absolute inset-0 h-full w-full"
+      className="pointer-events-none absolute inset-0 h-full w-full overflow-visible"
       viewBox="0 0 100 100"
       preserveAspectRatio="none"
       aria-hidden="true"
     >
-      {/* Static base path — very faint */}
-      <path d={d} stroke={t.ring} strokeWidth={thickness * 0.3} fill="none" vectorEffect="non-scaling-stroke" />
+      {/* Static base path — visible web line */}
+      <path
+        d={d}
+        stroke={t.ring}
+        strokeWidth={thickness * 0.9}
+        fill="none"
+        vectorEffect="non-scaling-stroke"
+        opacity={0.7}
+      />
+      {/* Soft outer glow */}
+      <path
+        d={d}
+        stroke={t.fill}
+        strokeWidth={thickness * 2.4}
+        fill="none"
+        vectorEffect="non-scaling-stroke"
+        opacity={0.18}
+        style={{ filter: 'blur(2px)' }}
+      />
       {/* Animated travelling pulse */}
       <motion.path
         d={d}
         stroke={t.fill}
-        strokeWidth={thickness * 0.6}
+        strokeWidth={thickness * 1.4}
         fill="none"
-        strokeDasharray="6 22"
         vectorEffect="non-scaling-stroke"
         initial={{ pathLength: 0, opacity: 0 }}
         animate={
           loop
-            ? { strokeDashoffset: [-100, 0], opacity: [0, 0.8, 0] }
+            ? { strokeDashoffset: [-100, 0], opacity: [0.4, 1, 0.4] }
             : { pathLength: 1, opacity: 1 }
         }
         transition={{
@@ -208,12 +224,12 @@ export function NeighborhoodBackground({
     <div className="pointer-events-none absolute inset-0 overflow-hidden">
       {/* Layer 0: base canvas tone (already set on body) */}
       {/* Layer 1: neighborhood map */}
-      <div className="absolute inset-0 opacity-100">
+      {/* <div className="absolute inset-0 opacity-100">
         <NeighborhoodMap
           className={`h-full w-full ${mode === 'hero' ? 'opacity-60' : 'opacity-30'}`}
           intensity={intensity}
         />
-      </div>
+      </div> */}
 
       {/* Layer 2: signal trails */}
       {showSignals && !reduced && mode === 'hero' && (
@@ -239,7 +255,7 @@ export function NeighborhoodBackground({
               <PulseNode x={36} y={62} tone="neutral" size="sm" pulse={false} delay={2.2} />
             </>
           )}
-          {mode === 'ambient' && (
+          {mode === 'hero' && (
             <>
               <PulseNode x={12} y={18} tone="cool" size="sm" pulse={false} delay={0} />
               <PulseNode x={88} y={22} tone="warm" size="sm" pulse={false} delay={0.2} />

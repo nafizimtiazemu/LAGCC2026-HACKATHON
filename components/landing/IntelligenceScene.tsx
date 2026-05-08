@@ -43,10 +43,10 @@ export function IntelligenceScene() {
   const reveal = useTransform(scrollYProgress, [0.2, 0.55], [0, 1]);
 
   return (
-    <section ref={ref} className="relative h-[220vh] bg-canvas">
+    <section ref={ref} className="relative h-[160vh] bg-canvas">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         {/* Side label */}
-        <div className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 md:block">
+        <div className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 pt-20 md:block">
           <SceneLabel pillar="Intelligence" vertical />
         </div>
 
@@ -57,20 +57,21 @@ export function IntelligenceScene() {
 
         <div className="relative z-10 mx-auto w-full max-w-7xl px-6 md:pl-32 lg:pl-48">
           <motion.div style={{ opacity }}>
-            <SceneLabel pillar="Intelligence" index={2} total={5} />
-            <h2 className="mt-8 max-w-3xl font-display text-5xl font-light leading-[0.95] tracking-tight text-ink md:text-6xl lg:text-7xl">
+            <h2 className="max-w-3xl font-display text-3xl font-light leading-[1.05] tracking-tight text-ink md:text-4xl lg:text-5xl">
               Then it turns scattered details
               <br />
               <em className="italic text-cool-bright">into campaigns that sound like you.</em>
             </h2>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-ink-secondary md:text-lg">
-              No prompts to learn. No strategy decks. Bloom AI absorbs your raw business signals and
-              routes them into the assets a local marketer would otherwise spend a week producing.
+            <p className="mt-6 max-w-xl text-sm leading-relaxed text-ink-secondary md:text-base">
+              No prompts to learn. No strategy decks. Just connect your assets, set a few parameters, and get recommendations that are ready to post or send.
             </p>
           </motion.div>
 
-          {/* Flow diagram */}
-          <motion.div style={{ opacity }} className="mt-12 grid grid-cols-1 gap-8 lg:grid-cols-[1fr_auto_1fr]">
+          {/* Flow diagram — aligned input/output rows */}
+          <motion.div
+            style={{ opacity }}
+            className="mt-10 grid grid-cols-1 items-start gap-6 lg:grid-cols-[1fr_80px_1fr] lg:gap-4"
+          >
             {/* Inputs column */}
             <div className="space-y-3">
               <p className="mono-label">Inputs</p>
@@ -83,7 +84,7 @@ export function IntelligenceScene() {
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: false, amount: 0.3 }}
                     transition={{ delay: 0.1 + i * 0.08, duration: 0.5 }}
-                    className="panel flex items-center gap-3 p-3"
+                    className="panel flex h-[88px] items-center gap-3 p-3"
                   >
                     <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-lg border border-hairline bg-white/[0.03]">
                       <Icon className="h-4 w-4 text-ink-secondary" />
@@ -98,7 +99,7 @@ export function IntelligenceScene() {
             </div>
 
             {/* Routing arrow column */}
-            <div className="hidden items-center justify-center lg:flex">
+            <div className="hidden items-center justify-center pt-8 lg:flex">
               <Routing />
             </div>
 
@@ -112,7 +113,7 @@ export function IntelligenceScene() {
                   whileInView={{ opacity: 1, x: 0 }}
                   viewport={{ once: false, amount: 0.3 }}
                   transition={{ delay: 0.5 + i * 0.1, duration: 0.5 }}
-                  className="panel relative overflow-hidden p-4"
+                  className="panel relative flex h-[88px] flex-col justify-center overflow-hidden p-4"
                 >
                   <div className="absolute left-0 top-0 h-full w-0.5 bg-gradient-to-b from-warm via-cool to-trust" />
                   <div className="flex items-start justify-between gap-3">
@@ -121,7 +122,7 @@ export function IntelligenceScene() {
                       {out.tag}
                     </span>
                   </div>
-                  <p className="mt-2 text-sm leading-relaxed text-ink">{out.body}</p>
+                  <p className="mt-1.5 line-clamp-2 text-sm leading-snug text-ink">{out.body}</p>
                 </motion.div>
               ))}
             </div>

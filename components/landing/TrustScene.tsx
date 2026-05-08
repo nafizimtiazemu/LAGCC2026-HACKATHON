@@ -19,7 +19,7 @@ export function TrustScene() {
   const opacity = useTransform(scrollYProgress, [0.1, 0.3, 0.7, 0.95], [0, 1, 1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[200vh] bg-canvas">
+    <section ref={ref} className="relative h-[150vh] bg-canvas">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 md:block">
           <SceneLabel pillar="Trust" vertical />
@@ -31,7 +31,6 @@ export function TrustScene() {
 
         <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 md:pl-32 lg:grid-cols-[1fr_1.1fr] lg:pl-48">
           <motion.div style={{ opacity }}>
-            <SceneLabel pillar="Trust" index={5} total={5} />
             <h2 className="mt-8 font-display text-5xl font-light leading-[0.95] tracking-tight text-ink md:text-6xl lg:text-7xl">
               Compliance
               <br />

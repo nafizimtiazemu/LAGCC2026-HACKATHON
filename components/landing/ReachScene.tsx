@@ -6,10 +6,10 @@ import { Instagram, Facebook, Music2, MapPin } from 'lucide-react';
 import { SceneLabel } from '@/components/shell';
 
 const PLATFORMS = [
-  { x: 22, y: 22, icon: Instagram, label: 'Instagram', tone: 'warm' },
-  { x: 78, y: 22, icon: Music2, label: 'TikTok', tone: 'cool' },
-  { x: 22, y: 78, icon: Facebook, label: 'Facebook', tone: 'cool' },
-  { x: 78, y: 78, icon: MapPin, label: 'Google Business', tone: 'trust' },
+  { x: 18, y: 18, icon: Instagram, label: 'Instagram', tone: 'warm' },
+  { x: 82, y: 18, icon: Music2, label: 'TikTok', tone: 'cool' },
+  { x: 18, y: 82, icon: Facebook, label: 'Facebook', tone: 'cool' },
+  { x: 82, y: 82, icon: MapPin, label: 'Google Business', tone: 'trust' },
 ];
 
 const CREATORS = [
@@ -25,7 +25,7 @@ export function ReachScene() {
   const opacity = useTransform(scrollYProgress, [0.1, 0.3, 0.7, 0.95], [0, 1, 1, 0]);
 
   return (
-    <section ref={ref} className="relative h-[220vh] bg-canvas">
+    <section ref={ref} className="relative h-[160vh] bg-canvas">
       <div className="sticky top-0 flex h-screen items-center overflow-hidden">
         <div className="pointer-events-none absolute left-0 top-1/2 hidden -translate-y-1/2 md:block">
           <SceneLabel pillar="Reach" vertical />
@@ -35,25 +35,18 @@ export function ReachScene() {
         <div className="pointer-events-none absolute inset-0">
           <div className="absolute left-0 top-1/2 h-[700px] w-[700px] -translate-y-1/2 -translate-x-1/3 rounded-full bg-warm/[0.06] blur-3xl" />
         </div>
-
         <div className="relative z-10 mx-auto grid w-full max-w-7xl grid-cols-1 items-center gap-12 px-6 md:pl-32 lg:grid-cols-2 lg:pl-48">
           {/* Copy */}
-          <motion.div style={{ opacity }}>
-            <SceneLabel pillar="Reach" index={3} total={5} />
-            <h2 className="mt-8 font-display text-5xl font-light leading-[0.95] tracking-tight text-ink md:text-6xl lg:text-7xl">
-              Every post,
-              <br />
-              <span className="text-ink/70">every platform,</span>
-              <br />
-              <em className="italic text-warm-bright">every creator</em>
-              <br />
-              <span className="text-ink/70">becomes part</span>
-              <br />
-              <span className="text-ink/70">of one local system.</span>
-            </h2>
-            <p className="mt-8 max-w-xl text-base leading-relaxed text-ink-secondary md:text-lg">
-              One campaign branches across channels. Local creators with real audience overlap orbit
-              around it. Outreach is one tap away.
+          <motion.div style={{ opacity }} className="flex flex-col items-center text-center">
+          <h2 className="mt-8 font-display text-5xl font-light leading-[0.65] tracking-tight text-ink md:text-6xl lg:text-7xl">
+            Every <em className="font-light italic text-warm-bright">product</em>,
+            <br />
+            Every <em className="font-light italic text-warm-bright">service</em>,
+            <br />
+            Every <em className="font-light italic text-warm-bright">post</em>.
+          </h2>
+            <p className="mt-6 max-w-xl font-display text-xl font-light italic leading-snug text-ink-secondary md:text-2xl">
+              They will live rent-free in your client&apos;s mind.
             </p>
           </motion.div>
 
@@ -101,43 +94,48 @@ export function ReachScene() {
 function ReachDiagram() {
   return (
     <div className="relative h-full w-full">
-      {/* SVG branches */}
-      <svg className="absolute inset-0 h-full w-full" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+      {/* SVG branches — solid lines */}
+      <svg
+        className="absolute inset-0 h-full w-full"
+        viewBox="0 0 100 100"
+        preserveAspectRatio="none"
+        aria-hidden="true"
+      >
         <defs>
           <linearGradient id="branch-warm" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stopColor="rgba(197,111,68,0.7)" />
-            <stop offset="100%" stopColor="rgba(197,111,68,0)" />
+            <stop offset="0%" stopColor="rgba(197,111,68,0.8)" />
+            <stop offset="100%" stopColor="rgba(197,111,68,0.2)" />
           </linearGradient>
         </defs>
         {PLATFORMS.map((p, i) => (
           <motion.path
             key={i}
             d={`M 50 50 Q ${(50 + p.x) / 2} ${(50 + p.y) / 2 - 10} ${p.x} ${p.y}`}
-            stroke="rgba(197,111,68,0.4)"
-            strokeWidth="0.4"
-            strokeDasharray="3 5"
+            stroke="url(#branch-warm)"
+            strokeWidth="0.7"
             fill="none"
+            strokeLinecap="round"
             vectorEffect="non-scaling-stroke"
-            initial={{ pathLength: 0 }}
-            whileInView={{ pathLength: 1 }}
+            initial={{ pathLength: 0, opacity: 0 }}
+            whileInView={{ pathLength: 1, opacity: 1 }}
             viewport={{ once: false }}
             transition={{ duration: 1.2, delay: 0.3 + i * 0.15 }}
           />
         ))}
       </svg>
 
-      {/* Hub: campaign */}
+      {/* Hub: campaign — exactly centered, on top */}
       <motion.div
         initial={{ scale: 0.6, opacity: 0 }}
         whileInView={{ scale: 1, opacity: 1 }}
         viewport={{ once: false }}
         transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-        className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2"
+        className="absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2"
       >
         <div className="panel-strong relative flex h-32 w-32 flex-col items-center justify-center rounded-2xl">
           <div className="absolute -inset-4 rounded-3xl bg-warm/15 blur-2xl" />
           <p className="relative mono-label !text-warm-bright">Campaign</p>
-          <p className="relative mt-2 text-center font-display text-base font-light text-ink leading-tight">
+          <p className="relative mt-2 text-center font-display text-base font-light leading-tight text-ink">
             Lavender
             <br />
             Latte Drop
@@ -145,9 +143,21 @@ function ReachDiagram() {
         </div>
       </motion.div>
 
-      {/* Platform nodes */}
+      {/* Platform nodes — solid pulse-style tiles */}
       {PLATFORMS.map((p, i) => {
         const Icon = p.icon;
+        const ringColor =
+          p.tone === 'warm'
+            ? 'rgba(197,111,68,0.55)'
+            : p.tone === 'trust'
+            ? 'rgba(183,228,110,0.55)'
+            : 'rgba(76,203,199,0.55)';
+        const glowColor =
+          p.tone === 'warm'
+            ? 'rgba(232,147,104,0.4)'
+            : p.tone === 'trust'
+            ? 'rgba(183,228,110,0.35)'
+            : 'rgba(111,226,221,0.4)';
         return (
           <motion.div
             key={p.label}
@@ -155,14 +165,30 @@ function ReachDiagram() {
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: false }}
             transition={{ delay: 0.5 + i * 0.12, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-            className="absolute -translate-x-1/2 -translate-y-1/2"
+            className="absolute z-10 -translate-x-1/2 -translate-y-1/2"
             style={{ left: `${p.x}%`, top: `${p.y}%` }}
           >
-            <div className="panel relative flex h-16 w-16 items-center justify-center rounded-xl">
-              <Icon className="h-5 w-5 text-ink-secondary" />
-              <span className="pulse-dot absolute -right-1 -top-1 block h-2 w-2 rounded-full bg-cool text-cool" />
+            <div className="relative">
+              {/* Pulse rings */}
+              <span
+                className="absolute inset-0 rounded-2xl blur-xl opacity-60"
+                style={{ background: glowColor }}
+              />
+              {/* Glow */}
+              <span
+                className="absolute left-1/2 top-1/2 h-20 w-20 -translate-x-1/2 -translate-y-1/2 rounded-2xl blur-md"
+                style={{ background: glowColor, opacity: 0.6 }}
+              />
+              {/* Solid icon tile */}
+              <div
+                className="relative flex h-16 w-16 items-center justify-center rounded-2xl border bg-panel shadow-lg"
+                style={{ borderColor: ringColor }}
+              >
+                <Icon className="h-5 w-5 text-ink" />
+                <span className="pulse-dot absolute -right-1 -top-1 block h-2 w-2 rounded-full bg-cool text-cool" />
+              </div>
             </div>
-            <p className="mt-2 text-center font-mono text-[9px] uppercase tracking-[0.2em] text-ink-muted whitespace-nowrap">
+            <p className="mt-3 whitespace-nowrap text-center font-mono text-[9px] uppercase tracking-[0.2em] text-ink">
               {p.label}
             </p>
           </motion.div>
